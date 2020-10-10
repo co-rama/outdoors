@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "smartshop"
+    }
+  },
+  "defaultProject": "smartshop",
+  "cli": {
+    "analytics": "c0ae98ac-eb12-474c-bd76-f621f6fb2d9f"
+  }
 }
