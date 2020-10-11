@@ -2,10 +2,10 @@
   <mat-nav-list role="navigation" fxLayout="row">
     <a mat-list-item  routerLink="/" class="navigation">Home</a>
     <a mat-list-item  routerLink="/shopping-cart" class="navigation">Shopping cart</a>
-    <a mat-list-item routerLink="/my-orders" class="navigation">My Orders</a>
+<!--    <a mat-list-item routerLink="/my-orders" class="navigation">My Orders</a>-->
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     <mat-menu #menu="matMenu" >
-      <button mat-menu-item routerLink="/my/orders">My Orders</button>
+      <button mat-menu-item routerLink="/my-orders">My Orders</button>
       <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
       <button mat-menu-item routerLink="/admin/products">Manage Products</button>
       <button mat-menu-item routerLink="/"

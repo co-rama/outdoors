@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,14 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private auth: AngularFireAuth, private router: Router) {
+  constructor(private auth: AuthenticationService,
+              private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
   }
 
   login(): void {
-    this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()).
-      then((success) => {
-        this.router.navigate(['../']).catch( error => console.error(error));
-      }).
-      catch(reason => {
-        console.log(reason);
-      });
-    }
+    this.auth.login();
   }
+}
