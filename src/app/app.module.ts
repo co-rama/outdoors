@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {environment} from '../environments/environment.prod';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -45,7 +45,8 @@ import {MatSelectModule} from '@angular/material/select';
     MaterialModule,
     BrowserAnimationsModule,
     FlexModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

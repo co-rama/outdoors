@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../services/category.service';
+import {NgForm} from '@angular/forms';
+import {ProductService} from '../../services/product-service.service';
 
 @Component({
   selector: 'app-product-form',
@@ -7,18 +9,17 @@ import {CategoryService} from '../../services/category.service';
   styleUrls: ['./admin-product-form.component.css']
 })
 export class AdminProductFormComponent implements OnInit {
-  categories: [] = null;
-  constructor(private categoryService: CategoryService) { }
-
+  categories: any[] = null;
+  constructor(private productService: ProductService, private categoryService: CategoryService) { }
   ngOnInit(): void {
-    this.categoryService.getCategories()
-      .then(
-        categories => {
-          console.log('something came in');
-          this.categories = categories;
-          console.log(this.categories);
+    this.categoryService.getCategories().subscribe(
+      (categories: any[]) => {
+        this.categories = categories;
         }
-      ).catch(error => console.error(error));
+    );
   }
 
+  saveProduct(productForm: NgForm): void {
+    this.productService.create(productForm.value);
+  }
 }

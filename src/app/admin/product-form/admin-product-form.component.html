@@ -1,24 +1,38 @@
-<section class="col-lg-8">
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput placeholder="product title">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Select Category</mat-label>
-      <mat-select>
-        <mat-option value=""></mat-option>
-        <mat-option [value]="category.$key" *ngFor="let category of categories"></mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Price</mat-label>
-      <input type="number" matInput placeholder="price">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Image URL</mat-label>
-      <input type="text" matInput placeholder="image url">
-    </mat-form-field>
-    <button type="button" mat-raised-button color="primary">Save Product</button>
-  </form>
-</section>
+<div class="row">
+  <section class="col-lg-8">
+    <form #f="ngForm" (ngSubmit)="saveProduct(f)">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="product title" ngModel name="title" required #title>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Category</mat-label>
+        <mat-select ngModel name="category" required>
+          <mat-option value=""></mat-option>
+          <mat-option [value]="category.name" *ngFor="let category of categories">{{category.name}}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput placeholder="price" ngModel name="price" required #price>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Image URL</mat-label>
+        <input type="text" matInput placeholder="image url"
+               #imageUrl
+               ngModel name="imageUrl" required>
+      </mat-form-field>
+      <button type="submit" mat-raised-button
+              [disabled]="f.invalid"
+              color="primary">Save Product</button>
+    </form>
+  </section>
+  <section class="col-lg-4">
+    <mat-card>
+      <mat-card-header>{{ title.value }}</mat-card-header>
+      <img [src]="imageUrl.value" alt="Image Preview">
+      <mat-card-footer>{{ price.value | currency:'USD':true }}</mat-card-footer>
+    </mat-card>
+  </section>
+</div>

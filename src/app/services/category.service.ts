@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 export class CategoryService {
 
   constructor(private db: AngularFireDatabase) { }
-  async getCategories(): Promise<any> {
-    return this.db.list('/categories');
-    // return this.db.object('/categories');
+   getCategories(): Observable<any> {
+    return this.db.list('/categories').valueChanges();
   }
 }
