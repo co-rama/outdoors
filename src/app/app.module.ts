@@ -20,6 +20,8 @@ import {SmartRoutesModule} from './routing/smart-routes.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import {FlexModule} from '@angular/flex-layout';
+import { AdminProductFormComponent } from './admin/product-form/admin-product-form.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import {FlexModule} from '@angular/flex-layout';
     MyOrdersComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import {FlexModule} from '@angular/flex-layout';
     AngularFireModule.initializeApp(environment.firebase),
     MaterialModule,
     BrowserAnimationsModule,
-    FlexModule
+    FlexModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
